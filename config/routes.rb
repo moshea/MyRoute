@@ -1,4 +1,6 @@
 MyRoutes::Application.routes.draw do
+  resources :routes
+
   resources :users, :user_sessions
 
 	match 'login' => 'user_sessions#new', :as => :login

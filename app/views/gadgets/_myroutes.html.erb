@@ -1,0 +1,11 @@
+<div gadget='mymaps' class='gadget'>
+	<div class='title'> My Routes </div>
+	
+	<% if current_user %>
+	 	<%= link_to 'New Route', new_route_path %> 
+	<% else %>
+		Login time
+	<% end %>
+	
+	
+</div>
