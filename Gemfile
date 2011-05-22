@@ -7,6 +7,7 @@ gem 'rails', '3.0.5'
 
 gem 'mysql2'
 gem 'authlogic'
+gem 'json'
 
 # Use unicorn as the web server
 # gem 'unicorn'

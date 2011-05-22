@@ -80,4 +80,11 @@ class RoutesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def overlay
+  	@route = Route.find(params[:id])
+  	respond_to do |format|
+  		format.json { render :text => @route.gmap_coords }
+  	end
+  end
 end

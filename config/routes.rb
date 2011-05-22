@@ -1,5 +1,9 @@
 MyRoutes::Application.routes.draw do
-  resources :routes
+  resources :routes do
+  	member do
+  		get 'overlay'
+  	end
+  end
 
   resources :users, :user_sessions
 
