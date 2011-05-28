@@ -45,10 +45,9 @@ function Map(){
 			case "add_poly":
 				// using unshift here, so the new poly line is always the first in the polyline array
 				// it will reduce computation time for finding the last one
-				this.polylines.unshift( new google.maps.Polyline(this.poly_options) );
-  			this.polylines[0].setMap(this.canvas);
+				var line = this.add_polyline();
   			var listener = google.maps.event.addListener(this.canvas, 'click', function(event){
-  				_this.add_poly_point(event, _this.polylines[0]);
+  				_this.add_poly_point(event, line);
   			});
   			this.listeners.push(listener);	
 		}
@@ -58,8 +57,15 @@ function Map(){
 		this.markers.push( new google.maps.Marker({position: location, map: this.canvas}) );
 	}
 	
+	this.add_polyline = function(){
+		this.polylines.unshift( new google.maps.Polyline(this.poly_options) );
+  	this.polylines[0].setMap(this.canvas);
+  	return this.polylines[0];
+	}
+	
 	this.add_poly_point = function(event, polyline){
 	  var path = polyline.getPath();
+	  console.log(event.latLng);
 	  path.push(event.latLng);
 	  // Add a new marker at the new plotted point on the polyline.
 	  var marker = new google.maps.Marker({
@@ -77,27 +83,49 @@ function Map(){
 	}
 	
 	// useful for submitting the map data back to the server
+	// create a json in the format
+	// { marker: [{marker1, marker2..}], polyline: [{poly1, poly2..}]}
 	this.serialize = function(){
-		var list = [];
-		this.markers.forEach(function(marker){
-			list.push({ type: "marker",
-									lat: marker.getPosition().lat().toString(),
-									lng: marker.getPosition().lng().toString()});
-		})
-		this.polylines.forEach(function(polyline){
-			list.push({path: polyline.getPath().getArray().toString() });
-		})
+		var serialized = {};
+		var marker_list = [];
+		var polyline_list = [];
+		var coord_list = [];
 		
-		return $.serializeJSON(list);
+		this.markers.forEach(function(marker){		
+			marker_list.push({ lat: marker.getPosition().lat().toString(),
+												 lng: marker.getPosition().lng().toString()});
+		});
+		
+		this.polylines.forEach(function(polyline){
+			var coords = polyline.getPath().getArray();
+			coords.forEach(function(coord){
+				coord_list.push({lat: coord.lat().toString(), lng: coord.lng().toString()});
+			});
+			polyline_list.push(coord_list);
+		});
+		
+		serialized['polyline'] = polyline_list;
+		serialized['marker'] = marker_list;	
+		return $.serializeJSON(serialized);
 	}
 	
-	this.show_overlay = function(overlay){
+	// show_overlay will take the json version of markers/polylines
+	// and draw them on the map
+	this.show_overlay = function(overlay){;
 		var _this = this;
-		overlay.forEach(function(marker){
-			if(marker.type == "marker"){
-				latlng = new google.maps.LatLng(marker.lat, marker.lng);
+		
+		overlay.marker.forEach(function(marker){
+				var latlng = new google.maps.LatLng(marker.lat, marker.lng);
 				_this.add_marker(latlng);
-			}
+		});
+		
+		overlay.polyline.forEach(function(polyline){
+			var line = _this.add_polyline();
+			polyline.forEach(function(coord){
+				var latlng = new google.maps.LatLng(coord.lat, coord.lng);
+				// need to pass ing {latLng: latlng} here, as this is what google.maps.Marker expects
+				_this.add_poly_point({latLng: latlng}, line);
+			});
 		});
 	}
 	

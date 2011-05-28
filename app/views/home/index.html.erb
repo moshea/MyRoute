@@ -1,4 +1,6 @@
-<%= render :partial => 'search/quick_search' %>
+<%= render 'search/quick_search' %>
+
+<%= render :partial => 'routes/featured', :object => @featured_route %>
 
 <div gadget='mymaps' class='gadget'>
 	<%= render '/gadgets/myroutes' %>

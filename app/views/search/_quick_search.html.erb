@@ -1,3 +1,8 @@
 <div id='search'>
-	SEARCH
+	<%= form_for 'search', :url => routes_path, :html => {:method => :get } do |f| %>
+		<%= f.select( :country_equals, options_for_select(["Country", "Ireland", "United Kingdom"], "Country") )%>
+		<%= f.select( :sport_equals, options_for_select([ "Sport", "Running", "Mountain Biking"], "Sport") ) %>
+		<%= f.text_field :description_or_title_contains, :value=>'Refine Search' %>
+		<%= f.submit 'Search' %>
+  <% end %>
 </div>

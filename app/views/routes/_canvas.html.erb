@@ -1,0 +1,14 @@
+<!-- get the default heights for the canvas before building it -->
+<% height,width = canvas_size(size)%>
+
+<div id="map_canvas" style="width: <%=width%>px; height: <%=height%>px"></div>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+    map = new Map();
+    map.show_canvas();
+    map.mode('read');
+    map.get_overlay( '<%= overlay_route_path( canvas ) %>' );
+})
+
+</script>
