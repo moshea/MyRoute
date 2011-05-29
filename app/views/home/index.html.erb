@@ -2,6 +2,4 @@
 
 <%= render :partial => 'routes/featured', :object => @featured_route %>
 
-<div gadget='mymaps' class='gadget'>
-	<%= render '/gadgets/myroutes' %>
-</div>
+<%= render :partial => 'routes/gadget_new', :object => @new_route %>

@@ -27,7 +27,8 @@ class RoutesController < ApplicationController
 	# GET /routes/new
 	# GET /routes/new.xml
 	def new
-		@route = Route.new
+		logger.debug("/routes/new params[:route] : #{params[:route].inspect}")
+		@route = Route.new(params[:route])
 
 		respond_to do |format|
 			format.html # new.html.erb

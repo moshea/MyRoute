@@ -12,15 +12,20 @@
 </head>
 <body>
 
-	<% if current_user %>
-		<%= link_to 'Profile', users_path %>
-		<%= link_to 'Logut', :logout %>
-	<% else %>
-		<%= link_to 'Register', new_user_path %>
-		<%= link_to 'Login', :login %>
-	<% end %>
+	<div id="header">
+		<% if current_user %>
+			<%= link_to 'My Profile', users_path %> |
+			<%= link_to 'Logut', :logout %>
+		<% else %>
+			<%= link_to 'Register', new_user_path %> |
+			<%= link_to 'Login', :login %>
+		<% end %>
+	</div>
 	
-	<%= yield %>
+	<div id="main">
+	
+		<%= yield %>
 
+	</div>
 </body>
 </html>

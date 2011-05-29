@@ -1,0 +1,20 @@
+<div class='gadget'>
+	<div class='gadget_header'>
+		Build Your Route
+	</div>
+	Its easy! <br />
+	<br />
+	Point it out on a map <br />
+	OR <br />
+	Upload a gps file <br />
+	OR <br />
+	Upload from your phone <br />
+	<br />
+	Get started now! <br />
+	<br />
+	<%= form_for gadget_new, :url => new_route_path, :html => {:method => :get } do |f| %>
+		<%= label_tag :name %>
+		<%= f.text_field :name %>
+		<%= f.submit :Next %> 
+	<% end %>
+</div>
