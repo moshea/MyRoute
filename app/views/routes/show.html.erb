@@ -1,6 +1,6 @@
 <%= @route.name %>
 
-<%= render :partial => 'cavnas', :object => @route %>
+<%= render :partial => 'routes/canvas', :object => @route, :locals=>{:size=>:large} %>
 
 <%= @route.description %>
 

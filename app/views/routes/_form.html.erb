@@ -1,23 +1,19 @@
-
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
 <%= form_for @route do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-
-<div id="map_canvas" style="width:600px; height:400px"></div>
-
-<div id="map_controls">
-	<%= link_to_function "Add Marker", 'map.mode("add_marker")'%>
-	<%= link_to_function "Add Polyline", 'map.mode("add_poly")'%>
-	<%= link_to_function "Submit", 'map.serialize()'%>
+<%= f.text_field :name, :value => (@route.name || "Name please!") %>
+<div id="edit_map">
+	<%= render :partial => 'routes/canvas', :locals => {:size => :large }%>
+	
+	<div id="map_controls">
+		<%= link_to_function "Add Marker", 'map.mode("add_marker")'%> <br />
+		<%= link_to_function "Add Polyline", 'map.mode("add_poly")'%>
+	</div>
 </div>
-
-<%= f.label :description %>
-<%= f.text_area :description %>
+<div class='map_form'>
+<%= f.text_area :description, :value => "Why not put a quick description here..." %>
 <%= f.hidden_field :gmap_coords %>
-
+<br />
 <%= f.submit %>
+</div>
 <% end %>
 
 <script type="text/javascript"> 

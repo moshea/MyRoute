@@ -1,5 +1,6 @@
-<!-- get the default heights for the canvas before building it -->
-<% height,width = canvas_size(size)%>
+<% # usage: render :partial => 'routes/canvas, [:object=>@route], [:locals=>{:size=>small|medium|large}]'%>
+
+<% height,width = canvas_size(size) %>
 
 <div id="map_canvas" style="width: <%=width%>px; height: <%=height%>px"></div>
 
@@ -8,7 +9,10 @@ $(document).ready(function(){
     map = new Map();
     map.show_canvas();
     map.mode('read');
-    map.get_overlay( '<%= overlay_route_path( canvas ) %>' );
+    <% # if a map is passed, try to get the overlay %>
+    <% if canvas %>
+    	map.get_overlay( '<%= overlay_route_path( canvas ) %>' );
+    <% end %>
 })
 
 </script>

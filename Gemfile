@@ -10,6 +10,13 @@ gem 'authlogic'
 gem 'json'
 gem 'meta_search'
 
+group :test, :development do
+  gem "rspec-rails", "~> 2.4"
+  gem "autotest"
+  gem "capybara"
+  gem "launchy"
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

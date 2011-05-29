@@ -8,14 +8,22 @@ a{
 	text-decoration: none;
 	
 }
+input[type='submit']{
+	background-color: #62A141;
+	border-radius: 5px;
+	padding: 5px 20px 5px 20px;
+}
 #header{
 	height: 60px;
 	background-color: #223C44;
 	border-bottom: 2px solid #31687B;
-	
+	text-align: right;
+	padding-right: 30px;
+	padding-top: 5px;
 }
 #main{
 	background-color: #1D2D32;
+	padding: 10px;
 }
 
 #search{
@@ -37,6 +45,7 @@ a{
 	width: 350px;
 	background-color: #223C44;
 	margin-left: 40px;
+	padding: 5px;
 }
 
 .gadget_header{
@@ -45,4 +54,23 @@ a{
 	background-color: #223C44;
 	border-bottom: 2px solid #31687B;
 	height: 30px;
+}
+
+#edit_map{
+	width: 100%;
+}
+#edit_map #map_canvas{
+float:left;
+}
+#edit_map #map_controls{
+float:left;
+}
+.map_form{
+padding-top: 10px;
+clear:both;
+}
+
+#route_description{
+	width: 800px;
+	height: 200px;
 }
