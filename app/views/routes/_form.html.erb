@@ -1,19 +1,25 @@
 <%= form_for @route do |f| %>
-<%= f.text_field :name, :value => (@route.name || "Name please!") %>
-<div id="edit_map">
-	<%= render :partial => 'routes/canvas', :locals => {:size => :large }%>
-	
-	<div id="map_controls">
-		<%= link_to_function "Add Marker", 'map.mode("add_marker")'%> <br />
-		<%= link_to_function "Add Polyline", 'map.mode("add_poly")'%>
+	<div class='map_form'>
+		<%= label_tag :name %>
+		<%= f.text_field :name, :value => (@route.name || "Name please!") %>
 	</div>
-</div>
-<div class='map_form'>
-<%= f.text_area :description, :value => "Why not put a quick description here..." %>
-<%= f.hidden_field :gmap_coords %>
-<br />
-<%= f.submit %>
-</div>
+	
+	<div id="edit_map">
+		<%= render :partial => 'routes/canvas', :locals => {:size => :large }%>
+		
+		<div id="map_controls">
+			<%= link_to_function "Add Marker", 'map.mode("add_marker")'%> <br />
+			<%= link_to_function "Add Polyline", 'map.mode("add_poly")'%>
+		</div>
+	</div>
+	
+	<div class='map_form'>
+		<%= label_tag :description %>
+		<%= f.text_area :description, :value => "Why not put a quick description here..." %>
+		<%= f.hidden_field :gmap_coords %>
+		<br />
+		<%= f.submit %>
+	</div>
 <% end %>
 
 <script type="text/javascript"> 

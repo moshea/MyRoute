@@ -12,6 +12,12 @@ input[type='submit']{
 	background-color: #62A141;
 	border-radius: 5px;
 	padding: 5px 20px 5px 20px;
+	float:right;
+}
+label{
+	display:block;
+	float:left;
+	width: 100px;
 }
 #header{
 	height: 60px;
@@ -66,11 +72,13 @@ float:left;
 float:left;
 }
 .map_form{
-padding-top: 10px;
-clear:both;
+	padding-top: 20px;
+	margin-bottom: 20px;
+	width: 810px;
+	clear:both;
 }
 
 #route_description{
-	width: 800px;
+	width: 700px;
 	height: 200px;
 }
