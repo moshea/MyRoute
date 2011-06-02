@@ -3,10 +3,11 @@ class UserSessionsController < ApplicationController
   # GET /user_sessions/new.xml
   def new
     @user_session = UserSession.new
-
+    logger.debug("/user_session/new params: #{params.inspect}")
+		@redirect = { :url => params[:url] }
+		
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user_session }
+      format.html{ render(:action => "new") } 
     end
   end
 
@@ -14,14 +15,14 @@ class UserSessionsController < ApplicationController
   # POST /user_sessions.xml
   def create
     @user_session = UserSession.new(params[:user_session])
-
+    logger.debug("/user_session/create: params: #{params.inspect}")
+		redirect_url = params[:user_session][:url] || root_url
+		
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to(root_url, :notice => 'User session was successfully created.') }
-        format.xml  { render :xml => @user_session, :status => :created, :location => @user_session }
+        format.html { redirect_to(redirect_url) }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @user_session.errors, :status => :unprocessable_entity }
       end
     end
   end

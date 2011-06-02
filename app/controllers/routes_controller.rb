@@ -1,4 +1,6 @@
 class RoutesController < ApplicationController
+	
+	before_filter :authenticate, :only => [:new, :edit, :create, :update]
 	# GET /routes
 	# GET /routes.xml
 	def index
@@ -70,18 +72,6 @@ class RoutesController < ApplicationController
 				format.html { render :action => "edit" }
 				format.xml  { render :xml => @route.errors, :status => :unprocessable_entity }
 			end
-		end
-	end
-
-	# DELETE /routes/1
-	# DELETE /routes/1.xml
-	def destroy
-		@route = Route.find(params[:id])
-		@route.destroy
-
-		respond_to do |format|
-			format.html { redirect_to(routes_url) }
-			format.xml  { head :ok }
 		end
 	end
 

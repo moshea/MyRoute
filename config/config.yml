@@ -1,0 +1,9 @@
+development:
+  google_static_map_url: http://maps.google.com/maps/api/staticmap
+
+test:
+  google_static_map_url: http://maps.google.com/maps/api/staticmap
+
+production:
+  google_static_map_url: http://maps.google.com/maps/api/staticmap
+	

@@ -14,7 +14,8 @@ group :test, :development do
   gem "rspec-rails", "~> 2.4"
   gem "autotest"
   gem "capybara"
-  gem "launchy"
+  gem "mocha", :require => false
+  gem 'factory_girl_rails'
 end
 
 # Use unicorn as the web server

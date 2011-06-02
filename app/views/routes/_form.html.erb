@@ -1,11 +1,14 @@
 <%= form_for @route do |f| %>
 	<div class='map_form'>
-		<%= label_tag :name %>
-		<%= f.text_field :name, :value => (@route.name || "Name please!") %>
+		<div class='field'>
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+			<span class='error'> <%= @route.errors[:name] %></span>
+		</div>
 	</div>
 	
 	<div id="edit_map">
-		<%= render :partial => 'routes/canvas', :locals => {:size => :large }%>
+		<%= render :partial => 'routes/canvas', :locals => {:size => :large, :mode => :add_marker }%>
 		
 		<div id="map_controls">
 			<%= link_to_function "Add Marker", 'map.mode("add_marker")'%> <br />
@@ -14,19 +17,16 @@
 	</div>
 	
 	<div class='map_form'>
-		<%= label_tag :description %>
-		<%= f.text_area :description, :value => "Why not put a quick description here..." %>
+		
+		<div class='field'>
+			<%= label_tag :description %>
+			<%= f.text_area :description %>
+			<span class='error'> <%= @route.errors[:description] %></span>
+		</div>
+		
 		<%= f.hidden_field :gmap_coords %>
-		<br />
-		<%= f.submit %>
+		<div class='actions'>
+			<%= f.submit %>
+		</div>
 	</div>
 <% end %>
-
-<script type="text/javascript"> 
-$(document).ready(function(){
-    map = new Map();
-    map.show_canvas();
-    map.mode('add_marker');
-})
-
-</script>

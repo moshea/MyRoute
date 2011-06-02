@@ -18,6 +18,7 @@ label{
 	display:block;
 	float:left;
 	width: 100px;
+	color: #FFFFFF;
 }
 #header{
 	height: 60px;
@@ -70,15 +71,35 @@ float:left;
 }
 #edit_map #map_controls{
 float:left;
+height: 300px;
+width: 200px;
+background-image: url('/images/map_controls_background.gif');
+margin-left: 20px;
+padding: 10px;
+border-radius: 20px;
 }
 .map_form{
+	padding-bottom: 20px;
 	padding-top: 20px;
 	margin-bottom: 20px;
-	width: 810px;
 	clear:both;
+	width: 810px;
+}
+.map_form input{
+	float:left;
 }
 
 #route_description{
 	width: 700px;
 	height: 200px;
+}
+
+.error{
+	color: red;
+	padding-left: 20px;
+}
+
+.field{
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
