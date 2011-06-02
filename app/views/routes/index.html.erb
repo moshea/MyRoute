@@ -1,21 +1,20 @@
-<h1>Listing routes</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render :partial => 'search/quick_search' %>
 
 <% @routes.each do |route| %>
-  <tr>
-    <td><%= link_to 'Show', route %></td>
-    <td><%= link_to 'Edit', edit_route_path(route) %></td>
-    <td><%= link_to 'Destroy', route, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+	<div class='preview_route'>
+		<div class='map'>
+			<%= link_to image_tag(route.static_map(:height=>200, :width=>200)), route_url(route)%>
+		</div>
+		
+		<div class='route_info'>
+			<div class='title'>
+				<%= link_to route.name, route_url(route) %>
+			</div>
+			
+			<div class='description'>
+				<%= route.description %>
+			</div>
+		</div>
+			
+	</div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Route', new_route_path %>

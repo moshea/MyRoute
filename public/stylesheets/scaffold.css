@@ -103,3 +103,23 @@ border-radius: 20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.preview_route{
+	background-image: url('/images/map_controls_background.gif');
+	border-radius: 20px;
+	margin: 20px;
+	height: 250px;
+}
+.preview_route .title a{
+	color: yellow;
+}
+.preview_route .map{
+	float:left;
+	height: 200px;
+}
+
+.preview_route .route_info{
+	float:left;
+	height: 200px;
+	padding: 20px;
+}
