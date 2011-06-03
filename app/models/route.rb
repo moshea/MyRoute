@@ -4,7 +4,10 @@ class Route < ActiveRecord::Base
 	validates_presence_of :gmap_coords
 	validates_presence_of :user_id
 	
-	has_one :user
+	belongs_to :user
+	belongs_to :country
+	has_many :route_sports
+	has_many :sports, :through => :route_sports
 	
 	# take the last 3 added routes as featured
 	def self.featured
@@ -13,6 +16,10 @@ class Route < ActiveRecord::Base
 	
 	def static_map(params={})
 		GoogleMap.new(self).static_map_url(params)
+	end
+	
+	def geocode
+		GoogleMap.new(self).geocode_route
 	end
 	
 end

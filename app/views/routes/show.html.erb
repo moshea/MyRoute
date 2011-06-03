@@ -6,4 +6,6 @@
 
 <%= @route.description %>
 
+Perfect for: <%= @route.sports.collect{ |sport| sport.name }.join(", ")%>
+
 

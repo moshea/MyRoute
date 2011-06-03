@@ -1,9 +1,12 @@
 development:
   google_static_map_url: http://maps.google.com/maps/api/staticmap
+  google_geocode_url: http://maps.googleapis.com/maps/api/geocode/json
 
 test:
   google_static_map_url: http://maps.google.com/maps/api/staticmap
+  google_geocode_url: http://maps.googleapis.com/maps/api/geocode/json
 
 production:
   google_static_map_url: http://maps.google.com/maps/api/staticmap
+  google_geocode_url: http://maps.googleapis.com/maps/api/geocode/json
 	

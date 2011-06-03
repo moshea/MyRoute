@@ -31,6 +31,7 @@ class RoutesController < ApplicationController
 	def new
 		logger.debug("/routes/new params[:route] : #{params[:route].inspect}")
 		@route = Route.new(params[:route])
+		@sports = Sport.all
 
 		respond_to do |format|
 			format.html # new.html.erb
@@ -41,13 +42,15 @@ class RoutesController < ApplicationController
 	# GET /routes/1/edit
 	def edit
 		@route = Route.find(params[:id])
+		@sports = Sport.all
 	end
 
 	# POST /routes
 	# POST /routes.xml
 	def create
-		@route = Route.new(params[:route].merge(:user_id=>current_user))
-
+		@route = Route.new(params[:route].merge(:user=>current_user))
+		@route.geocode
+		
 		respond_to do |format|
 			if @route.save
 				format.html { redirect_to(@route, :notice => 'Route was successfully created.') }

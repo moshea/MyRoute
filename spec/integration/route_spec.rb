@@ -3,7 +3,8 @@ require 'spec_helper'
 describe "the new route page", :type => :request do
 	
 	it "renders the new route page when I visit new_route_path" do
-		visit new_route_path
+		visit root_path
+		#add sign up as part of test
 		page.should have_selector('input#route_name')
 		page.should have_selector('textarea#route_description')
 	end

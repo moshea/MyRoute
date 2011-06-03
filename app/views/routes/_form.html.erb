@@ -19,6 +19,13 @@
 	<div class='map_form'>
 		
 		<div class='field'>
+			<% @sports.each do |sport| %>
+				<%= label_tag sport.name%>
+				<%= check_box_tag 'route[sport_ids][]', sport.id, @route.sports.include?(sport) %>
+			<% end %>
+		</div>
+		
+		<div class='field'>
 			<%= label_tag :description %>
 			<%= f.text_area :description %>
 			<span class='error'> <%= @route.errors[:description] %></span>
