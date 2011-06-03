@@ -1,5 +1,9 @@
 <div id='featured'>
-
-<%= image_tag(featured.static_map)%>
-						
+	<div class='features'>
+		<% featured.each do |feature| %>
+			<div class='feature'>
+				<%= image_tag(feature.static_map)%>
+			</div>
+		<% end %>
+	</div>		
 </div>

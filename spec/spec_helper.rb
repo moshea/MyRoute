@@ -9,6 +9,10 @@ require 'capybara/rails'
 
 require 'mocha'
 
+# this will help us test controller that need authlogic
+require "authlogic/test_case"
+include Authlogic::TestCase
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}

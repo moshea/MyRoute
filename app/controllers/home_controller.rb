@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 	
 	def index
-		@featured_route = Route.last
+		@featured_routes = Route.featured
 		@new_route = Route.new
 	end
 end

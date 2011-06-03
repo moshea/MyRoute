@@ -46,7 +46,7 @@ class RoutesController < ApplicationController
 	# POST /routes
 	# POST /routes.xml
 	def create
-		@route = Route.new(params[:route])
+		@route = Route.new(params[:route].merge(:user_id=>current_user))
 
 		respond_to do |format|
 			if @route.save
