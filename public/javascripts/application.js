@@ -104,7 +104,7 @@ function Map(){
 			polyline_list.push(coord_list);
 		});
 		
-		serialized['polyline'] = polyline_list;
+		serialized['path'] = polyline_list;
 		serialized['marker'] = marker_list;	
 		return $.serializeJSON(serialized);
 	}
@@ -119,7 +119,7 @@ function Map(){
 				_this.add_marker(latlng);
 		});
 		
-		overlay.polyline.forEach(function(polyline){
+		overlay.path.forEach(function(polyline){
 			var line = _this.add_polyline();
 			polyline.forEach(function(coord){
 				var latlng = new google.maps.LatLng(coord.lat, coord.lng);

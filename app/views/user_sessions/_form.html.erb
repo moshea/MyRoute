@@ -19,7 +19,7 @@
     <%= f.label :password %>
     <%= f.text_field :password %>
   </div>
-  <%= f.hidden_field :url, :value => @redirect[:url] %>
+  <%= f.hidden_field :url, :value => @redirect[:url] if @redirect %>
   <div class="actions">
     <%= f.submit %>
   </div>
