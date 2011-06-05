@@ -13,13 +13,19 @@
 <body>
 
 	<div id="header">
-		<% if current_user %>
-			<%= link_to 'My Profile', users_path %> |
-			<%= link_to 'Logout', :logout %>
-		<% else %>
-			<%= link_to 'Register', new_user_path %> |
-			<%= link_to 'Login', :login %>
-		<% end %>
+		<div id='site_logo'>
+			<%= link_to 'MyRoutes', root_url %>
+		</div>
+
+		<div id='user_menu'>
+			<% if current_user %>
+				<%= link_to 'My Profile', users_path %> |
+				<%= link_to 'Logout', :logout %>
+			<% else %>
+				<%= link_to 'Register', new_user_path %> |
+				<%= link_to 'Login', :login %>
+			<% end %>
+		</div>
 	</div>
 	
 	<div id="main">
