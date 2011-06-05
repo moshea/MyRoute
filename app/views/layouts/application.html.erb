@@ -11,24 +11,28 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+	<div id='headerwrapper'>
 
-	<div id="header">
-		<div id='site_logo'>
-			<%= link_to 'MyRoutes', root_url %>
-		</div>
+		<div id="header" class='fullpage'>
+			<div id='logo'>
+				<%= link_to 'MyRoutes', root_url %>
+			</div>
 
-		<div id='user_menu'>
-			<% if current_user %>
-				<%= link_to 'My Profile', users_path %> |
-				<%= link_to 'Logout', :logout %>
-			<% else %>
-				<%= link_to 'Register', new_user_path %> |
-				<%= link_to 'Login', :login %>
-			<% end %>
+			<div id='user_menu'>
+				<% if current_user %>
+					<%= link_to 'My Profile', users_path %> |
+					<%= link_to 'Logout', :logout %>
+				<% else %>
+					<%= link_to 'Register', new_user_path %> |
+					<%= link_to 'Login', :login %>
+				<% end %>
+			</div>
+		
 		</div>
+		<%= render :partial => '/search/quick_search' %>
 	</div>
 	
-	<div id="main">
+	<div id="main" class='fullscreen'>
 	
 		<%= yield %>
 

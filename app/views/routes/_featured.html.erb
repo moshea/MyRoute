@@ -1,9 +1,11 @@
-<div id='featured'>
-	<div class='features'>
-		<% featured.each do |feature| %>
-			<div class='feature'>
-				<%= image_tag(feature.static_map)%>
-			</div>
-		<% end %>
-	</div>		
+<div id='featured_wrapper'>
+	<div id='featured' class='fullpage'>
+		<div class='features'>
+			<% featured.each do |feature| %>
+				<div class='feature'>
+					<%= image_tag(feature.static_map)%>
+				</div>
+			<% end %>
+		</div>		
+	</div>
 </div>
