@@ -1,6 +1,7 @@
 class RoutesController < ApplicationController
 	
 	before_filter :authenticate, :only => [:new, :edit, :create, :update]
+	before_filter :current_user_geoip, :only => [:new]
 	# GET /routes
 	# GET /routes.xml
 	def index

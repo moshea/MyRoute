@@ -1,4 +1,32 @@
-Installation Notes:
+# Installation Notes:
+
+export RAILS_ROOT=
+export MYSQL_ROOT_PASS=
+export MYSQL_APP_PASS=
+
+sudo apt-get install mysql-server
+#sudo apt-get install ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8
+sudo apt-get install libreadline-ruby1.8 libruby1.8 libopenssl-ruby
+sudo apt-get install libxslt-dev libxml2-dev
+sudo apt-get install libmysqlclient-dev
+
+# set up the mysql database
+mysql -uroot -p MYSQL_ROOT_PASS
+create database myroutes_test
+create database myroutes_dev
+grant all on myroutes_dev.* to 'myroutes'@'localhost';
+grant all on myroutes_test.* to 'myroutes'@'localhost';
+exit
+
+
+# install the rails gems
+cd RAILS_ROOT
+bundle install
+rake db:schema:load
+rake db:seed
+
+
+# install the geoip database
 1. Download and unpack the geoip database:
 
 sudo mkdir /usr/local/share/geoip

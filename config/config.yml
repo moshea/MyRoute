@@ -1,12 +1,15 @@
 development:
   google_static_map_url: http://maps.google.com/maps/api/staticmap
   google_geocode_url: http://maps.googleapis.com/maps/api/geocode/json
+  maxmind_geoip_database: '/usr/local/share/geoip/GeoLiteCity.dat'
 
 test:
   google_static_map_url: http://maps.google.com/maps/api/staticmap
   google_geocode_url: http://maps.googleapis.com/maps/api/geocode/json
+  maxmind_geoip_database: '/usr/local/share/geoip/GeoLiteCity.dat'
 
 production:
   google_static_map_url: http://maps.google.com/maps/api/staticmap
   google_geocode_url: http://maps.googleapis.com/maps/api/geocode/json
+  maxmind_geoip_database: '/usr/local/share/geoip/GeoLiteCity.dat'
 	

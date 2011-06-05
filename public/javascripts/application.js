@@ -8,10 +8,22 @@ function Map(){
 	
 	this.listeners = [];
 	
+	this.get_map_center = function(){
+		try{
+			if(center = map_center()){
+				return center;
+			}else{
+				throw "no center defined";
+			}
+		}catch(e){
+			return new google.maps.LatLng(51.5, 0);
+		}
+	}
+	
 	// initial options for creating the base map
 	this.init_options = {
       zoom: 8,
-      center: new google.maps.LatLng(-34.397, 150.644),
+      center: this.get_map_center(),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     

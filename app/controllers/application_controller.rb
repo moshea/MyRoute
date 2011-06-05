@@ -19,6 +19,16 @@ class ApplicationController < ActionController::Base
   	@current_user = current_user_session && current_user_session.record
   end
   
+  # this will place the lat/lng location of a user in a session, so
+  # it can be used when building new maps
+  def current_user_geoip
+    unless session[:location]
+      lat, lng = GeoIP.instance.lat_lng(request.remote_ip)
+      session[:location] = {:lat => lat, :lng => lng}
+    end
+    return session[:location]
+  end
+  
   # the search bar for finding routes may submit the default search terms
   # which will not find anything, so these need to be removed first
   def remove_default_search_terms(search_terms)

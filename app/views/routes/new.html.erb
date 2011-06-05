@@ -1,3 +1,14 @@
 <%= render 'form' %>
 
 
+<script>
+function map_center(){
+	var maplat = <%=session[:location][:lat]%>;
+	var maplng = <%=session[:location][:lng]%>;
+	if( (typeof(maplat) == "number") && (typeof(maplng) == "number") ){
+		return new google.maps.LatLng(maplat, maplng);
+	}else{
+		return undefined;
+	}
+}
+</script>
