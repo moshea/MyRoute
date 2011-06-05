@@ -10,6 +10,12 @@ function Map(){
 	
 	this.get_map_center = function(){
 		try{
+			if(this.markers.length > 0){
+				return this.markers[0].getPosition();
+			}
+			if(this.polylines.length > 0){
+				return this.polylines[0].getPath().getArray()[0];
+			}
 			if(center = map_center()){
 				return center;
 			}else{
@@ -18,6 +24,10 @@ function Map(){
 		}catch(e){
 			return new google.maps.LatLng(51.5, 0);
 		}
+	}
+	
+	this.center_map = function(){
+		this.canvas.setCenter(this.get_map_center());
 	}
 	
 	// initial options for creating the base map
@@ -77,7 +87,6 @@ function Map(){
 	
 	this.add_poly_point = function(event, polyline){
 	  var path = polyline.getPath();
-	  console.log(event.latLng);
 	  path.push(event.latLng);
 	  // Add a new marker at the new plotted point on the polyline.
 	  var marker = new google.maps.Marker({
@@ -146,6 +155,7 @@ function Map(){
 		$.ajax({url:url, type:'GET', 
 			success:function(data){ 
 					_this.show_overlay(data);	
+					_this.center_map();
 				}
 			});
 	}

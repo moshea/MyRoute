@@ -50,7 +50,7 @@ class GoogleMap
 		coords ? (APP_CONFIG['google_geocode_url'] + '?sensor=false&latlng=' + coords) : false
 	end
 	
-	# generates a url to a static google map image
+	# generates a url to a static google map image which
 	# will include paths and markers
 	def static_map_url(params={})
 		attr = {:height=>HEIGHT, 
