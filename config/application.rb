@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+# needed for 3rd party net requests
+require 'net/http'
 # maxmind local geoip database
 require 'net/geoip'
 

@@ -2,7 +2,7 @@ class GoogleMap
 	
 	HEIGHT = 200
 	WIDTH = 200
-	ZOOM = 10
+	ZOOM = 8
 	
 	def initialize(route)
 		@route = route
@@ -58,7 +58,7 @@ class GoogleMap
 						:zoom=>ZOOM}.merge!(params)
 									
 		url_params = static_params
-		APP_CONFIG['google_static_map_url'] + '?' + url_params + "&sensor=false&size=#{attr[:height].to_s}x#{attr[:width].to_s}&zoom=#{attr[:zoom].to_s}"
+		APP_CONFIG['google_static_map_url'] + '?' + url_params + "&sensor=false&size=#{attr[:height].to_s}x#{attr[:width].to_s}"
 	end
 	
 	
